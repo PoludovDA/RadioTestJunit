@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import radio.Radio;
 import radio.Song;
 
@@ -25,10 +26,12 @@ public class MegaPage {
         Selenide.open("https://www.radio-megapolis.ru/");
     }
 
+    @Step("Получение названия текущей песни")
     public String nowSong() {
         return nowPlay.shouldBe(visible).text().split("\n")[1];
     }
 
+    @Step("Получение последних трех игравших песен")
     public List<Song> lastThreeSongs() {
         List<Song> res = new ArrayList<>();
         songs.get(0).shouldBe(visible);

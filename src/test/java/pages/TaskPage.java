@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
@@ -17,10 +18,12 @@ public class TaskPage {
     private final static SelenideElement blueButton = $x("//button[contains(@class,'primary')]");
     private final static SelenideElement twiceButton = $x("//button[text()='Button']");
 
+    @Step("Клик по динамической кнопке")
     public void checkDynamicButton() {
         dynamicButton.shouldBe(Condition.enabled);
     }
 
+    @Step("Обработка аллерта")
     public void clickBlueAndWindow() {
         int k = 0;
         String alertMessage = null;
@@ -42,6 +45,7 @@ public class TaskPage {
         Assertions.assertEquals("Primary button pressed", alertMessage);
     }
 
+    @Step("Проверка двойного клика")
     public void checkTwiceButton() {
         twiceButton.click();
         twiceButton.shouldBe(Condition.enabled);

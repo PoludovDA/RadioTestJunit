@@ -1,5 +1,6 @@
 package helpers;
 
+import io.qameta.allure.Step;
 import radio.Song;
 
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class HelperDB {
 
+    @Step("Добавление списка песен в БД")
     public static void addListSong(List<Song> songs, Statement statement) {
         songs.forEach(x -> {
             try {
@@ -23,6 +25,7 @@ public class HelperDB {
         });
     }
 
+    @Step("Добавление песни в БД")
     public static void addSong(Song song, Statement statement) {
         try {
             statement.executeQuery(String.format("INSERT INTO %s VALUES ('%s', '%s', '%s', %d);",
@@ -33,6 +36,7 @@ public class HelperDB {
         }
     }
 
+    @Step("Установка количества проигрываний песни на радио")
     public static void setRepeatedCount(Song song, Statement statement) {
         try {
             String repeated = null;
