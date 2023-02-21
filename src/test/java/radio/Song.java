@@ -57,7 +57,7 @@ public class Song {
         this.radio = radio;
     }
 
-    static class SongBuilder {
+    public static class SongBuilder {
         private String song;
         private String artist;
         private String date;
@@ -100,20 +100,5 @@ public class Song {
         public Song build() {
             return new Song(this);
         }
-    }
-}
-
-enum Radio {
-    MEGAPOLIS("megapolis"),
-    RADIO_7("radio_7");
-
-    private final String name;
-
-    Radio(String name) {
-        this.name = name;
-    }
-
-    public String getRadioName() {
-        return this.name;
     }
 }
