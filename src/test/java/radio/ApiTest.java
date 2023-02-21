@@ -7,6 +7,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pages.SevenPage;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,7 +25,7 @@ public class ApiTest extends DataBaseTest {
 
     @Test
     public void logoTest() throws IOException {
-        File file = new File("src//test//resources//downloads//actualLogo.svg");
+        File file = new File("src//test//resources//downloads//actualLogo.jpg");
         if (!file.exists()) {
             byte[] actualLogotype = given()
                     .when()
@@ -48,6 +49,7 @@ public class ApiTest extends DataBaseTest {
                 .then().log().all()
                 .extract().response();
 
+        SevenPage.jsonTracks(response.asString());
         JsonPath jsonPath = response.jsonPath();
         List<String> artists = jsonPath.getList("playlist.artist.name");
         List<String> songs = jsonPath.getList("playlist.song.name");

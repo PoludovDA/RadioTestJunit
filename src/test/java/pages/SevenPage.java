@@ -34,7 +34,7 @@ public class SevenPage {
 
     @Step("Получение играющей сейчас песни")
     public String playNow() {
-        imageLogo("actualLogo.svg");
+        imageLogo("actualLogo.jpg");
         return trackNow.get(0).shouldBe(visible).text() + " - " + trackNow.get(1).text();
     }
 
@@ -43,6 +43,17 @@ public class SevenPage {
 
         try {
             return Files.readAllBytes(Paths.get("src/test/resources/downloads", fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Attachment(value = "Вложение", type = "application/json")
+    public static byte[] jsonTracks(String name) {
+        File file = new File("src//test//resources//downloads//trackResponse.json");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)){
+            fileOutputStream.write(name.getBytes());
+            return Files.readAllBytes(Paths.get("src//test//resources//downloads//trackResponse.json"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
