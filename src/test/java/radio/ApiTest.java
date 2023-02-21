@@ -2,6 +2,10 @@ package radio;
 
 import core.DataBaseTest;
 import helpers.HelperDB;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -23,6 +27,9 @@ import static io.restassured.RestAssured.given;
 
 public class ApiTest extends DataBaseTest {
 
+    @Epic("Радио")
+    @Story("Логотип радио")
+    @Description("Проверка отображения логотипа Радио 7")
     @Test
     public void logoTest() throws IOException {
         File file = new File("src//test//resources//downloads//actualLogo.jpg");
@@ -40,6 +47,9 @@ public class ApiTest extends DataBaseTest {
         }
     }
 
+    @Epic("Радио")
+    @Feature("Статистика песен")
+    @Description("Статистика песен Радио 7")
     @Test
     public void radioSevenSongScanner() {
         Response response = given()
