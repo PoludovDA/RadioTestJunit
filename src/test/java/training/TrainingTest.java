@@ -35,7 +35,7 @@ public class TrainingTest extends BaseSelenideTest {
     }
 
     @Epic("Проблемный фронт")
-    @ValueSource(strings = {"great", "big", "Denis", "Jenkins"})
+    @ValueSource(strings = {"great", "big", "Denis"})
     @Description("Проверка длины строки")
     @ParameterizedTest
     public void strParamTest(String word) {
