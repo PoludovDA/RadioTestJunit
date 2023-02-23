@@ -1,6 +1,5 @@
 package radio;
 
-import core.BaseSelenideTest;
 import core.DataBaseTest;
 import helpers.HelperDB;
 import io.qameta.allure.Description;
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.MegaPage;
 import pages.SevenPage;
-
-import java.io.File;
 import java.util.List;
 
 public class RadioTest extends DataBaseTest {

@@ -1,14 +1,13 @@
 package training;
 
-import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import core.BaseSelenideTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import pages.MainTrainingPage;
 
 
@@ -22,9 +21,8 @@ public class TrainingTest extends BaseSelenideTest {
     }
 
     @Epic("Проблемный фронт")
-    @RepeatedTest(1)
     @Description("Тестирование аллерта")
-    @Test
+    @RepeatedTest(1)
     public void alertTest() {
         new MainTrainingPage().chooseTask("Class Attribute").clickBlueAndWindow();
     }
@@ -34,5 +32,13 @@ public class TrainingTest extends BaseSelenideTest {
     @Test
     public void doubleTest() {
         new MainTrainingPage().chooseTask("Hidden Layers").checkTwiceButton();
+    }
+
+    @Epic("Проблемный фронт")
+    @ValueSource(strings = {"great", "big", "Denis"})
+    @Description("Проверка длины строки")
+    @ParameterizedTest
+    public void strParamTest(String word) {
+        Assertions.assertEquals(5, word.length());
     }
 }

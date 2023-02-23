@@ -1,15 +1,10 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
-import core.BaseSelenideTest;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
-import okio.Path;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,13 +13,10 @@ import java.nio.file.Paths;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static io.restassured.RestAssured.given;
 
 
 public class SevenPage {
-    private final SelenideElement playButton = $$x("//*[@class='mp-bg']").get(0);
     private final ElementsCollection trackNow = $$x("//li[12]//span[@class='holder']/span");
-    private final SelenideElement logotype = $x("//header//img");
 
     public SevenPage() {
         open("https://radio7.ru/");
