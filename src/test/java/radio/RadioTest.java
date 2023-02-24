@@ -38,8 +38,8 @@ public class RadioTest extends DataBaseTest {
     @Description("Статистика песен радио Мегаполис")
     @Test
     public void uiScannerMegaTest() {
-        List<Song> songs = new MegaPage().lastThreeSongs();
-        songs.forEach(x -> HelperDB.setRepeatedCount(x, statement));
-        HelperDB.addListSong(songs, statement);
+//        List<Song> songs = new MegaPage().lastThreeSongs();
+//        songs.forEach(x -> HelperDB.setRepeatedCount(x, statement));
+//        HelperDB.addListSong(songs, statement);
     }
 }

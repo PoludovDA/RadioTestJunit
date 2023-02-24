@@ -52,33 +52,33 @@ public class ApiTest extends DataBaseTest {
     @Description("Статистика песен Радио 7")
     @Test
     public void radioSevenSongScanner() {
-        Response response = given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get("https://radio7.ru/on_air/onair.json.js?_=1676961938786")
-                .then().log().all()
-                .extract().response();
-
-        SevenPage.jsonTracks(response.asString());
-        JsonPath jsonPath = response.jsonPath();
-        List<String> artists = jsonPath.getList("playlist.artist.name");
-        List<String> songs = jsonPath.getList("playlist.song.name");
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        String date = simpleDateFormat.format(new Date());
-
-        List<Song> tracks = new ArrayList<>();
-
-        for (int i = 0; i < artists.size(); i++) {
-            tracks.add(new Song.SongBuilder()
-                    .setSong(songs.get(i))
-                    .setArtist(artists.get(i))
-                    .setDate(date)
-                    .setRadio(Radio.RADIO_7)
-                    .build());
-        }
-
-        tracks.forEach(x -> HelperDB.setRepeatedCount(x, statement));
-        HelperDB.addListSong(tracks, statement);
+//        Response response = given()
+//                .contentType(ContentType.JSON)
+//                .when()
+//                .get("https://radio7.ru/on_air/onair.json.js?_=1676961938786")
+//                .then().log().all()
+//                .extract().response();
+//
+//        SevenPage.jsonTracks(response.asString());
+//        JsonPath jsonPath = response.jsonPath();
+//        List<String> artists = jsonPath.getList("playlist.artist.name");
+//        List<String> songs = jsonPath.getList("playlist.song.name");
+//
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+//        String date = simpleDateFormat.format(new Date());
+//
+//        List<Song> tracks = new ArrayList<>();
+//
+//        for (int i = 0; i < artists.size(); i++) {
+//            tracks.add(new Song.SongBuilder()
+//                    .setSong(songs.get(i))
+//                    .setArtist(artists.get(i))
+//                    .setDate(date)
+//                    .setRadio(Radio.RADIO_7)
+//                    .build());
+//        }
+//
+//        tracks.forEach(x -> HelperDB.setRepeatedCount(x, statement));
+//        HelperDB.addListSong(tracks, statement);
     }
 }
