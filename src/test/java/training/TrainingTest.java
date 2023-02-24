@@ -4,6 +4,7 @@ import core.BaseSelenideTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,6 +16,7 @@ public class TrainingTest extends BaseSelenideTest {
 
     @Epic("Проблемный фронт")
     @Description("Тестирование проблемной кнопки")
+    @DisplayName("Тестирование динамической кнопки")
     @Test
     public void buttonDynamicTest() {
         new MainTrainingPage().chooseTask("Dynamic ID").checkDynamicButton();
